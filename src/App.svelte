@@ -102,6 +102,14 @@
         bind:selected_tab={selected_tab}
       />
     </div>
+
+    <div class="language">
+        <label for={"language"}>{$t("language")}</label> 
+        <select name="language" id="language"> 
+            <option value="en">{$t("en")}</option> 
+            <option value="es">{$t("es")}</option> 
+        </select>
+    </div>
   </div>
 
   <div class="main">

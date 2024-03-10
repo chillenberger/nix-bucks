@@ -119,6 +119,28 @@
     font-weight: bold;
 }
 
+.header .language {
+    position: absolute;
+    bottom: 2em;
+    left: 10%;
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.header .language label {
+    margin-bottom: 0.5em;
+}
+.header .language select {
+    width: 100%;
+    background-color: var(--background-light);
+    color: var(--foreground);
+}
+
 .inactive {
     display: none !important;
 }

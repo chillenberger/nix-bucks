@@ -1,4 +1,4 @@
-use serde::{Serialize, Deserialize, Serializer, Deserializer, ser::Error};
+use serde::{Serialize, Deserialize, Serializer, Deserializer};
 
 #[derive(Debug, Clone, Copy)]
 pub enum Locale {
@@ -10,10 +10,7 @@ impl Serialize for Locale {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
         where S: Serializer
     {
-        serializer.serialize_str(match *self {
-            Locale::English => "en",
-            Locale::Spanish => "es",
-        })
+        serializer.serialize_str(String::from(*self).as_str())
     }
 }
 
@@ -22,12 +19,25 @@ impl<'de> Deserialize<'de> for Locale {
         where D: Deserializer<'de>
     {
         let s = String::deserialize(deserializer)?;
-        match s.as_str() {
-            "en" => Ok(Locale::English),
-            "es" => Ok(Locale::Spanish),
-            _ => Err(D::Error::custom("Expected en or es")),
+        Ok(s.into())
+    }
+}
+
+impl From<Locale> for String {
+    fn from(value: Locale) -> Self {
+        match value {
+            Locale::English => String::from("en"),
+            Locale::Spanish => String::from("es"),
         }
     }
 }
 
-
+impl Into<Locale> for String {
+    fn into(self) -> Locale {
+        match self.as_str() {
+            "en" => Locale::English,
+            "es" => Locale::Spanish,
+            _ => Locale::English,
+        }
+    }
+}
