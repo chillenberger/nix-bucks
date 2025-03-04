@@ -21,7 +21,7 @@ Remember that you can back up the config file, and also you can create copies to
 # Planning
 ## Goals
 - Provide a simple way to track subscription costs, expenses and income
-- Provide the bottomline information that we want to know (montly balance, how much money will I have, etc)
+- Provide the bottomline information that we want to know (monthly balance, how much money will I have, etc)
 - Store the information locally, while allowing for easy manual editing, parsing and reading of it.
 - Zero tracking, 100% local processing
 - Use the least amount of resources possible
